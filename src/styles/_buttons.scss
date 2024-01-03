@@ -1,0 +1,39 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition: all $transition;
+
+  &-start {
+    width: 100%;
+    padding: 16px 28px;
+    border-radius: 15px;
+    background: $color-btn;
+    font-family: $font-heading;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: $color-btn-text;
+  }
+
+  &-question {
+    padding: 4px 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 0.8px solid $color-btn;
+  }
+
+  &-submit {
+    padding: 11px 22px;
+    border-radius: 10px;
+    background: $color-btn;
+    color: $color-btn-text;
+    font-weight: 600;
+  }
+}
+
+.selected {
+  background: $color-selected;
+  border-color: $color-selected;
+}

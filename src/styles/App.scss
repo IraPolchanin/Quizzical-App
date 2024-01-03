@@ -1,0 +1,12 @@
+.App {
+  background: url(../../public/assets/blob-bottom.svg) left bottom no-repeat, url(../../public/assets/blob-top.svg) right top no-repeat, #F5F7FB;
+  max-width: 550px;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  font-family: $font-main;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: $color-text;
+}

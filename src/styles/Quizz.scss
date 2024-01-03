@@ -1,0 +1,26 @@
+.Quizz {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 0 auto;
+  padding: 40px 0 25px;
+  max-width: 400px;
+  width: 98%;
+
+  &__btn {
+    align-self: center;
+  }
+
+  &__results {
+    padding-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  &__results-text {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+}
