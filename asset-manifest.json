@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/IraPolchanin/Quizzical-App/static/css/main.0fa03ee0.css",
-    "main.js": "/IraPolchanin/Quizzical-App/static/js/main.0c6fa3dc.js",
-    "index.html": "/IraPolchanin/Quizzical-App/index.html",
-    "static/media/blob-bottom.svg": "/IraPolchanin/Quizzical-App/static/media/blob-bottom.5a0801127e1ec77c80b5.svg",
-    "static/media/blob-top.svg": "/IraPolchanin/Quizzical-App/static/media/blob-top.aab50735d1dbc905f9ed.svg",
-    "main.0fa03ee0.css.map": "/IraPolchanin/Quizzical-App/static/css/main.0fa03ee0.css.map",
-    "main.0c6fa3dc.js.map": "/IraPolchanin/Quizzical-App/static/js/main.0c6fa3dc.js.map"
+    "main.css": "/Quizzical-App/static/css/main.f64dd10b.css",
+    "main.js": "/Quizzical-App/static/js/main.0c6fa3dc.js",
+    "index.html": "/Quizzical-App/index.html",
+    "static/media/blob-bottom.svg": "/Quizzical-App/static/media/blob-bottom.5a0801127e1ec77c80b5.svg",
+    "static/media/blob-top.svg": "/Quizzical-App/static/media/blob-top.aab50735d1dbc905f9ed.svg",
+    "main.f64dd10b.css.map": "/Quizzical-App/static/css/main.f64dd10b.css.map",
+    "main.0c6fa3dc.js.map": "/Quizzical-App/static/js/main.0c6fa3dc.js.map"
   },
   "entrypoints": [
-    "static/css/main.0fa03ee0.css",
+    "static/css/main.f64dd10b.css",
     "static/js/main.0c6fa3dc.js"
   ]
 }
