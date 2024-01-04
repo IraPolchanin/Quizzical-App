@@ -5,7 +5,7 @@ import { Question } from './Question'
 
 export const Quizz = () => {
   const [questions, setQuestions] = useState([]);
-  const [upDatedQuestions, setUpDatedQuestions] = useState([]);
+  const [upDatedQuestions, setUpDatedQuestions] = useState(questions);
   const [isCheck, setIsCheck] = useState(false);
   const [rightAnswer, setRightAnswer] = useState(0);
   const [newGame, setNewGame] = useState(false);
@@ -26,7 +26,12 @@ export const Quizz = () => {
             id: nanoid(8)
           }));
           setQuestions(prepareData);
-          setUpDatedQuestions(prepareData)
+          setUpDatedQuestions(prepareData);
+          setUpDatedQuestions(prepareData => prepareData.map(data => ({
+            ...data,
+            isSelected: true,
+          })))
+
         }
       } catch (error) {
         console.error(error);
@@ -36,8 +41,11 @@ export const Quizz = () => {
   }, [newGame]);
 
   function saveResults(upDatedQuestion) {
+   console.log(upDatedQuestion)
     setUpDatedQuestions(prev => prev.map(question => question.id === upDatedQuestion.id
       ? upDatedQuestion : question))
+        // console.log(questions)
+    console.log(upDatedQuestions)
   }
 
   function handleSubmit(e) {
@@ -62,10 +70,11 @@ export const Quizz = () => {
     />)
 
   const renderAnswers = arr => arr.map(question => {
-  return <Question
+    return <Question
       key={question.id}
       question={question}
-    />})
+    />
+  })
 
   return (
     <form
@@ -78,7 +87,7 @@ export const Quizz = () => {
         : (isCheck && upDatedQuestions) && renderAnswers(upDatedQuestions)
       }
 
-      {!isCheck && questions.length>0
+      {!isCheck && questions.length > 0
         ? (<button
           className='Quizz__btn button button-submit'
           type="submit"

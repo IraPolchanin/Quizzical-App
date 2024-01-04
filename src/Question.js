@@ -15,6 +15,7 @@ export const Question = ({ question, saveResults }) => {
 
     upDatedQuestion.isCorrect = upDatedQuestion.answer === upDatedQuestion.correct_answer;
     saveResults(upDatedQuestion);
+    upDatedQuestion.isSelected = true;
   }
 
   return (
@@ -31,7 +32,6 @@ export const Question = ({ question, saveResults }) => {
               "disabled" : question.isSelected
             })}
             type="radio"
-            required
             name={question.question}
             label={option}
             value={option}
