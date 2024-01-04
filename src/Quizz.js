@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
 import { decode } from 'html-entities';
 import { Question } from './Question'
 
-export const Quizz = () => {
+export const Quizz = memo(({ gameOptions }) => {
   const [questions, setQuestions] = useState([]);
   const [upDatedQuestions, setUpDatedQuestions] = useState(questions);
   const [isCheck, setIsCheck] = useState(false);
   const [rightAnswer, setRightAnswer] = useState(0);
   const [newGame, setNewGame] = useState(false);
 
+  let url = `https://opentdb.com/api.php?amount=${gameOptions.amount}&category=${gameOptions.category}&difficulty=${gameOptions.difficulty}&type=${gameOptions.type}`;
+  console.log(url)
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const res = await fetch(`https://opentdb.com/api.php?amount=5`);
+        const res = await fetch(url);
         const data = await res.json();
         if (data) {
           const prepareData = data.results.map(question => ({
@@ -38,43 +40,39 @@ export const Quizz = () => {
       }
     };
     fetchQuestions();
-  }, [newGame]);
+  }, [newGame, url]);
 
-  function saveResults(upDatedQuestion) {
-   console.log(upDatedQuestion)
-    setUpDatedQuestions(prev => prev.map(question => question.id === upDatedQuestion.id
-      ? upDatedQuestion : question))
-        // console.log(questions)
-    console.log(upDatedQuestions)
-  }
+  const saveResults = upDatedQuestion => setUpDatedQuestions(prev => prev.map(question => question.id === upDatedQuestion.id
+    ? upDatedQuestion : question));
 
-  function handleSubmit(e) {
+  const handleSubmit = useCallback(e => {
     e.preventDefault();
     setIsCheck(true);
     setRightAnswer(upDatedQuestions.filter(question => question.isCorrect === true).length);
-  }
+  }, [upDatedQuestions]);
 
-  function handleReset() {
+  const handleReset = useCallback(() => {
     setIsCheck(false);
     setRightAnswer(0);
     setQuestions([]);
     setUpDatedQuestions([]);
     setNewGame(!newGame)
-  }
+  }, [newGame]);
 
-  const renderQuestions = arr => arr.map(question =>
+  const renderQuestions = useCallback(arr => arr.map(question =>
     <Question
       key={question.id}
       question={question}
       saveResults={saveResults}
-    />)
+    />
+  ), []);
 
-  const renderAnswers = arr => arr.map(question => {
+  const renderAnswers = useCallback(arr => arr.map(question => {
     return <Question
       key={question.id}
       question={question}
     />
-  })
+  }), []);
 
   return (
     <form
@@ -95,17 +93,25 @@ export const Quizz = () => {
           Check answers
         </button>)
 
-        : (<div className="Quizz__results">
-          <p className="Quizz__results-text">You scored {rightAnswer}/5 correct answers</p>
+        : isCheck && questions.length > 0 && (<div className="Quizz__results">
+          <p className="Quizz__results-text">You scored {rightAnswer}/ {gameOptions.amount} correct answers</p>
           <button
             className='Questions__btn button button-submit'
             type="reset"
           >
             Play again
           </button>
+
+          <button
+            className='Questions__btn button button-reset'
+            type="button"
+            onClick={() => document.location.reload()}
+          >
+            Change Quizz settings
+          </button>
         </div>)
       }
 
     </form>
   )
-}
+})

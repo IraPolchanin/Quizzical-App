@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import cn from 'classnames';
+import { FaRegCircleXmark } from "react-icons/fa6";
+import { FaRegCircleCheck } from "react-icons/fa6";
 
-export const Question = ({ question, saveResults }) => {
+export const Question = memo(({ question, saveResults }) => {
   let upDatedQuestion = {};
 
   const handleChange = (e) => {
@@ -29,7 +31,7 @@ export const Question = ({ question, saveResults }) => {
             className={cn("Question__input", {
               "correct": isCorrectAnswer && question.isSelected,
               "incorrect": !isCorrectAnswer && question.answer === option,
-              "disabled" : question.isSelected
+              "disabled": question.isSelected
             })}
             type="radio"
             name={question.question}
@@ -40,6 +42,10 @@ export const Question = ({ question, saveResults }) => {
           />
         })}
       </div>
+      <div className="Question__mark">
+        {question.isSelected && !question.isCorrect && <FaRegCircleXmark style={{ "fontSize": "24px", "color": "red" }} />}
+        {question.isCorrect && <FaRegCircleCheck style={{ "fontSize": "24px", "color": "green" }} />}
+      </div>
     </fieldset>
   )
-}
+})

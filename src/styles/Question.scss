@@ -1,4 +1,5 @@
 .Question {
+  position: relative;
   display: flex;
   gap: 12px;
   border: none;
@@ -35,8 +36,9 @@
       background-color: $color-selected;
       border-color: $color-selected;
     }
-    &:hover{
-    transform: scale(1.05);
+
+    &:hover {
+      transform: scale(1.05);
     }
   }
 
@@ -46,6 +48,11 @@
     text-align: center;
     width: 100%;
     background-color: transparent;
+  }
+
+  &__mark {
+    position: absolute;
+    right: 0;
   }
 
   .incorrect {

@@ -6,8 +6,14 @@
   cursor: pointer;
   transition: all $transition;
 
+  &:hover{
+  transform: scale(1.05);
+  opacity: 0.8;
+  }
+
   &-start {
-    width: 100%;
+    width: 90%;
+    max-width: 190px;
     padding: 16px 28px;
     border-radius: 15px;
     background: $color-btn;
@@ -30,6 +36,18 @@
     background: $color-btn;
     color: $color-btn-text;
     font-weight: 600;
+  }
+
+  &-reset {
+    width: 80%;
+    padding: 11px 22px;
+    border-radius: 10px;
+    background: #fffad1;
+    color: $color-btn;
+    font-weight: 600;
+    place-self: center;
+    font-weight: 700;
+    text-transform: uppercase;
   }
 }
 

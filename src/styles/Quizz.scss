@@ -14,8 +14,10 @@
   &__results {
     padding-top: 12px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
+    gap: 16px;
   }
 
   &__results-text {
