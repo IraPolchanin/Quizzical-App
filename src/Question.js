@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo} from 'react';
 import cn from 'classnames';
 import { FaRegCircleXmark } from "react-icons/fa6";
 import { FaRegCircleCheck } from "react-icons/fa6";
@@ -18,7 +18,7 @@ export const Question = memo(({ question, saveResults }) => {
     upDatedQuestion.isCorrect = upDatedQuestion.answer === upDatedQuestion.correct_answer;
     saveResults(upDatedQuestion);
     upDatedQuestion.isSelected = true;
-  }
+  };
 
   return (
     <fieldset className="Question" id={question.id}>

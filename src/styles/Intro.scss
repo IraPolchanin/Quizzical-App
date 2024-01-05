@@ -43,6 +43,7 @@
 
     @include onMobile() {
       height: 32px;
+      min-height: 32px;
       width: 80%;
     }
   }

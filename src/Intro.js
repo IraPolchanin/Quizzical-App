@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useRef } from 'react'
 
 export const Intro = memo(({
   setIsStarted,
@@ -10,16 +10,22 @@ export const Intro = memo(({
     const { name, value } = e.target;
 
     setGameOptions(prevGameOptions => ({
-        ...prevGameOptions,
-        [name]: value
-      }
+      ...prevGameOptions,
+      [name]: value
+    }
     ));
   }
 
   const handleSubmit = e => {
     e.preventDefault();
     setIsStarted(true);
-  }
+  };
+
+
+  let amountField = useRef(null);
+  useEffect(() => {
+    amountField.current.focus();
+  }, [])
 
   return (
     <div className="App__Intro Intro">
@@ -40,6 +46,7 @@ export const Intro = memo(({
           max="50"
           value={gameOptions.amount}
           onChange={handleChange}
+          ref={amountField}
         />
 
         <label htmlFor="category"><h3>Select Category:</h3> </label>

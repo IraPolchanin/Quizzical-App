@@ -11,7 +11,7 @@ export const Quizz = memo(({ gameOptions }) => {
   const [newGame, setNewGame] = useState(false);
 
   let url = `https://opentdb.com/api.php?amount=${gameOptions.amount}&category=${gameOptions.category}&difficulty=${gameOptions.difficulty}&type=${gameOptions.type}`;
-  console.log(url)
+ 
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
